@@ -15,6 +15,7 @@ typedef struct {
 }	vec2;
 
 int puntos = 0;
+vec2 cuerpo[256] ;
 
 int main(){
 	const int ANCHO_PANTALLA = 40;
@@ -64,21 +65,34 @@ int main(){
 			break;
 		}
 		/*------- Actualizar elementos -------*/
+		for (int i = puntos; i > 0; i--){
+			cuerpo[i] = cuerpo[i - 1];
+		}
+
+		cuerpo[0] = cabeza; // segmento siguiente a la cabeza va a ser igual
+							// a donde estaba la cabeza el paso anterior
+
 		cabeza.x += dir.x;
 		cabeza.y += dir.y;
 
 		if (cabeza.x == fruta.x && cabeza.y == fruta.y){
-			puntos += 100; 	//aumenta puntaje
+			puntos += 1; 	//aumenta puntaje
 
 			//Actualiza posición fruta
 			fruta.x = rand() % ANCHO_PANTALLA;
 			fruta.y = rand() % ALTO_PANTALLA;
 		}
 		
-		/*------- Dibujar pantalla -------*/
+		/*------- Dibujar -------*/
 		erase();	//Actualiza pantalla a mostrar, borrando lo anterior
 		mvaddch(fruta.y, fruta.x * 2, '@');		//Dibuja fruta
+
+		// Dibuja serpiente
+		for(int i = 0; i < puntos; i++){
+			mvaddch(cuerpo[i].y, cuerpo[i].x * 2, 'o');
+		}
 		mvaddch(cabeza.y, cabeza.x * 2, 'O');	//Dibuja cabeza serpiente	
+		
 		usleep(125000);	//Establece tiempo de espera antes de dibujar de nuevo
 	}
 
