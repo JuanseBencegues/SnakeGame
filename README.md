@@ -1,7 +1,6 @@
-# 🐍 Snake en C con ncurses
+# 🐍 Juego de la serpiente en C con ncurses
 
-Este proyecto es una práctica de programación en lenguaje **C**, centrada en la exploración de nuevas librerías para construir interfaces de usuario en la terminal. Se trata de una implementación básica (y en desarrollo) del clásico juego **Snake**, utilizando la biblioteca `ncurses`.
-
+Este proyecto es una práctica de programación en lenguaje **C**, centrada en la exploración de nuevas librerías para construir interfaces de usuario en la terminal. Se trata de una implementación MUY básica (y en desarrollo) del clásico juego **Snake**, utilizando la biblioteca `ncurses`.
 ---
 
 ## 📚 Objetivo del Proyecto
